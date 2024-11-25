@@ -1,0 +1,27 @@
+<h1>Welcome to the Vulnerable Site</h1>
+<p>Click the button below:</p>
+<form id="paymentForm" action="/make-payment" method="POST">
+  <button type="submit">Pay now</button>
+</form>
+
+<script>
+  document
+    .getElementById("paymentForm")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+      fetch("/make-payment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({}),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          alert("Payment response: " + JSON.stringify(data.message));
+        })
+        .catch((error) => {
+          alert("Error: " + error);
+        });
+    });
+</script>
